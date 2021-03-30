@@ -8,6 +8,7 @@ import splashScreen from "../screens/splash/splashScreen";
 import loginScreen from "../screens/login/loginScreen";
 import registerScreen from "../screens/register/register";
 import loginOrRegister from "../screens/loginOrRegister/loginOrRegisterScreen";
+import presentationScreen from "../screens/presentation/presentationScreen";
 
 //
 const stackForAuth = createStackNavigator(
@@ -34,6 +35,7 @@ const appNav = createAppContainer(createSwitchNavigator(
 
     {
         splash: splashScreen,
+        presentation: presentationScreen,
         auth: stackForAuth,
 
     }

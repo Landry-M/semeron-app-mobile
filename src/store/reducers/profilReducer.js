@@ -1,5 +1,6 @@
 const initialState = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    firstLaunch: true
 };
 
 
