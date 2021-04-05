@@ -32,13 +32,13 @@ class loginScreen extends Component {
                     <TextInput
                         label="Pseudonyme"
                         value=""
-                        onChangeText={text => setText(text)}
+
                     />
 
                     <TextInput
                         label="Mot de passe"
                         value=""
-                        onChangeText={text => setText(text)}
+
                     />
 
                 </ScrollView>
@@ -46,13 +46,13 @@ class loginScreen extends Component {
                 <View style={{ flex: 0.5, flexDirection: 'row', margin: 7, justifyContent: 'center', alignItems: 'flex-end' }}>
 
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('register')} style={{ borderTopLeftRadius: 15, borderBottomLeftRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('home')} style={{ borderTopLeftRadius: 15, borderBottomLeftRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
                         <Text>
                             Connexion
                         </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('login')} style={{ borderTopRightRadius: 15, borderBottomRightRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
+                    <TouchableOpacity style={{ borderTopRightRadius: 15, borderBottomRightRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
                         <Text>
                             Ignorer
                         </Text>

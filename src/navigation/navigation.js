@@ -1,3 +1,4 @@
+import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -9,6 +10,12 @@ import loginScreen from "../screens/login/loginScreen";
 import registerScreen from "../screens/register/register";
 import loginOrRegister from "../screens/loginOrRegister/loginOrRegisterScreen";
 import presentationScreen from "../screens/presentation/presentationScreen";
+import homeScreen from "../screens/home/homeScreen";
+import searchScreen from "../screens/search/searchScreen";
+import parametreScreen from "../screens/parametre/parametreScreen";
+import detailsPublicationScreen from "../screens/detailsPublication/detailsPublicationScreen";
+
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 //
 const stackForAuth = createStackNavigator(
@@ -29,15 +36,67 @@ const stackForAuth = createStackNavigator(
 );
 
 //
-//const tabForHome = 
+const stackForHome = createStackNavigator({
+    accueil: homeScreen,
+    details: detailsPublicationScreen,
+});
+
+//
+const stackForSearch = createStackNavigator({
+    search: searchScreen,
+    details: detailsPublicationScreen
+});
+
+//
+const stackForParams = createStackNavigator({
+    parametre: parametreScreen
+});
+
+//
+const tabForHome = createBottomTabNavigator(
+    {
+        accueil: {
+            screen: stackForHome,
+            navigationOptions: {
+                tabBarLabel: "Home",
+                tabBarIcon: ({ tintColor }) => (
+                    <Icon name="home-circle-outline" color='#3FC4ED' size={21} />
+                )
+            }
+        },
+        recherche: {
+            screen: stackForSearch,
+            navigationOptions: {
+                tabBarLabel: "Recherche",
+                tabBarIcon: ({ tintColor }) => (
+                    <Icon name="cloud-search-outline" color='#3FC4ED' size={21} />
+                )
+            }
+        },
+        option: {
+            screen: stackForParams,
+            navigationOptions: {
+                tabBarLabel: "Option",
+                tabBarIcon: ({ tintColor }) => (
+                    <Icon name="cog-sync-outline" color='#3FC4ED' size={21} />
+                )
+            }
+        }
+    }
+);
 
 const appNav = createAppContainer(createSwitchNavigator(
 
     {
+
         splash: splashScreen,
         presentation: presentationScreen,
         auth: stackForAuth,
+        home: tabForHome,
 
+    },
+    {
+        initialRouteName: 'splash'
     }
 ));
 

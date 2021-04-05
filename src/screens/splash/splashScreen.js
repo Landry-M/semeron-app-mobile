@@ -43,6 +43,8 @@ class splashScreen extends Component {
 
             if (firstLauch == true) {
                 this.props.navigation.navigate('presentation');
+                //     this.props.navigation.navigate('home');
+
             } else {
                 this.props.navigation.navigate(this.props.profil.profilReducer.isLoggedIn === true ? 'home' : 'auth');
             }
