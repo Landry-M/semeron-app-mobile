@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image, Text, TouchableOpacity, ScrollView } from "react-native";
 import { TextInput } from "react-native-paper";
+import { connect } from 'react-redux';
+
 
 class loginScreen extends Component {
 
@@ -13,6 +15,10 @@ class loginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    componentDidMount() {
+        console.log(this.props.profil.profilReducer);
     }
 
     render() {
@@ -36,19 +42,19 @@ class loginScreen extends Component {
                     />
 
                     <TextInput
-                        label="Mot de passe"
+                        label="Eglise"
                         value=""
 
                     />
 
                 </ScrollView>
 
-                <View style={{ flex: 0.5, flexDirection: 'row', margin: 7, justifyContent: 'center', alignItems: 'flex-end' }}>
+                <View style={{ flex: 0.18, flexDirection: 'row', margin: 7, justifyContent: 'center', alignItems: 'flex-end' }}>
 
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('home')} style={{ borderTopLeftRadius: 15, borderBottomLeftRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('register')} style={{ borderTopLeftRadius: 15, borderBottomLeftRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
                         <Text>
-                            Connexion
+                            Créez compte
                         </Text>
                     </TouchableOpacity>
 
@@ -64,4 +70,10 @@ class loginScreen extends Component {
     }
 }
 
-export default loginScreen;
+const mapPropsToState = state => {
+    return {
+        profil: state
+    }
+}
+
+export default connect(mapPropsToState)(loginScreen);

@@ -14,10 +14,16 @@ function profilReducer(state = initialState, action) {
             return nextState || state;
             break;
 
+        case 'SET_FIRST_LAUNCH_APP':
+            nextState = { ...state };
+            nextState.firstLaunch = action.value;
+            return nextState || state;
+
         default:
             return nextState || state;
             break;
     }
+
 }
 
 export default profilReducer;

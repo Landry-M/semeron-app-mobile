@@ -16,7 +16,7 @@ class presentationScreen extends Component {
     }
 
     componentDidMount() {
-
+        console.log(this.props.profil.profilReducer);
     }
 
     render() {
@@ -29,7 +29,6 @@ class presentationScreen extends Component {
                     nextPos: false
                 }}
             >
-
                 <View style={styles.main_container} >
                     <Image source={require('../../assets/images/slide1.jpg')} resizeMode='center' style={{ height: 350, width: 350 }} />
                     <Text style={{ textAlign: 'center' }}>
@@ -38,6 +37,7 @@ class presentationScreen extends Component {
                 </View>
 
                 <View style={styles.main_container} >
+
                     <Image source={require('../../assets/images/slide2.jpg')} resizeMode='center' style={{ height: 350, width: 350 }} />
                     <Text style={{ textAlign: 'center' }}>
                         Amet mollit ea duis consectetur aliquip dolore qui occaecat reprehenderit proident sit nostrud eu ex. Excepteur occaecat tempor veniam commodo dolor. Eiusmod nisi laboris ut aliquip minim. Aliquip dolor labore ut voluptate reprehenderit laborum. Anim ullamco sit excepteur voluptate sunt adipisicing ipsum.
@@ -58,20 +58,25 @@ class presentationScreen extends Component {
                             <Icon name='arrow-right' color='#3FC4ED' size={15} />
                         </TouchableOpacity>
                     </View>
-
                 </View>
 
             </Swiper>
         );
     }
 
-    //
-    _onDone = () => {
-        this.props.navigation.navigate('auth');
+    _onDone = async () => {
+        try {
+            const action = { type: 'SET_FIRST_LAUNCH_APP', value: false }
+            await this.props.dispatch(action);
+            this.props.navigation.navigate('auth');
+
+        }
+        catch (error) {
+            ToastAndroid.show('Erreur veuillez réesayer', ToastAndroid.LONG);
+        }
     }
 
 }
-
 
 const styles = StyleSheet.create({
     buttonCircle: {
@@ -85,8 +90,11 @@ const styles = StyleSheet.create({
     main_container: {
         flex: 1,
         margin: 5,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: 'white'
     }
-    //[...]
+
 });
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PushNotification from "react-native-push-notification";
 import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-paper';
 
@@ -16,6 +17,10 @@ class loginOrRegisterScreen extends Component {
         super(props);
         this.state = {};
     }
+
+    componentDidMount() {
+        this.testPush();
+    };
 
     render() {
         return (
@@ -57,6 +62,11 @@ class loginOrRegisterScreen extends Component {
 
             </View>
         );
+    }
+
+
+    testPush = () => {
+
     }
 }
 

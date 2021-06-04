@@ -24,14 +24,8 @@ class searchScreen extends Component {
                     label="Recherche ..."
                     mode='flat'
                     onChangeText={text => this.setText(text)}
-                    // left={
-                    //     <TextInput.Icon
-                    //         name={<Icon name="home-circle-outline" color="black" size={10} />} // where <Icon /> is any component from vector-icons or anything else
-                    //         onPress={() => { }}
-                    //     />
-                    // }
                     right={<TextInput.Icon name={() => <Icon name={'cloud-search-outline'} size={20} style={{ color: '#3FC4ED' }} />} />}
-                    style={{ height: 45, color: '#3FC4ED', borderRadius: 5 }}
+                    style={{ height: 45, color: '#3FC4ED', borderRadius: 20 }}
                     blurOnSubmit={true}
                 />
             </View>
