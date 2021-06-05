@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Image, Text, ScrollView, TouchableOpacity, Alert } from "react-native";
+import { View, Image, Text, ScrollView, TouchableOpacity, Alert, ToastAndroid } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { connect } from "react-redux";
-import { register_user } from "../../control/Users/control_user";
+import { register_user, get_user_info } from "../../control/Users/control_user";
 import { Bubbles, DoubleBounce, Bars, Pulse } from "react-native-loader";
 import ActivityIndicator from "../components/activityIndicator";
 
@@ -27,7 +27,7 @@ class register extends Component {
     }
 
     componentDidMount() {
-        //register_user();
+
     };
 
     render() {
@@ -46,22 +46,22 @@ class register extends Component {
 
                     <TextInput
                         label="Pseudonyme"
-                        value=""
                         type="outlined"
-
+                        onChangeText={(pseudo) => this._setPseudo(pseudo)}
                         style={{ marginBottom: 5, margin: 7 }}
                     />
 
                     <TextInput
                         label="Email"
-                        value=""
                         type='outilined'
+                        onChangeText={(email) => this._setEmail(email)}
                         style={{ marginBottom: 5, margin: 7 }}
                     />
 
                     <TextInput
                         label="Eglise"
-                        value=""
+                        onChangeText={(eglise) => this._setEglise(eglise)}
+                        type='outlined'
                         style={{ margin: 7 }}
                     />
 
@@ -70,9 +70,9 @@ class register extends Component {
                 <View style={{ flex: 0.18, flexDirection: 'row', margin: 7, justifyContent: 'center', alignItems: 'flex-end' }}>
 
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('login')} style={{ borderTopLeftRadius: 15, borderBottomLeftRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
+                    <TouchableOpacity onPress={() => this._onValidate()} style={{ borderTopLeftRadius: 15, borderBottomLeftRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
                         <Text>
-                            Connexion
+                            Valider
                         </Text>
                     </TouchableOpacity>
 
@@ -114,6 +114,7 @@ class register extends Component {
 
     //
     _onValidate() {
+        //console.log(`${this.email} ${this.pseudo} ${this.eglise}`);
         this.setState({ is_loading: true });
 
         if (this.email == undefined || this.pseudo == undefined || this.eglise == undefined) {
@@ -126,12 +127,51 @@ class register extends Component {
                 { cancelable: true }
             );
         } else {
-            async () => {
-                let creation_user = await register_user(pseudo, email, eglise);
 
-            };
+            let user_exist = get_user_info(this.pseudo)
+                .then(res => {
+                    console.log(res.total);
+                    if (res.total == 0) {
+
+                        register_user(pseudo, email, eglise).then(res => {
+                            //redux et redirection (register reussi)
+                        }).catch(err => {
+                            ToastAndroid.showWithGravityAndOffset(
+                                'Une erreur est survenue lors de la creation de votre compte',
+                                ToastAndroid.LONG,
+                                ToastAndroid.BOTTOM,
+                                25,
+                                50
+                            );
+                        })
+
+                    } else {
+                        ToastAndroid.showWithGravityAndOffset(
+                            'Pseudo déjà utilisé',
+                            ToastAndroid.LONG,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50
+                        );
+                    }
+                })
+                .catch(err => {
+                    //console.log(err);
+                    if (err == "TypeError: Network request failed") {
+                        this.props.navigation.navigate('intErr');
+                    }
+                });
+
+            //let creation_user = await register_user(pseudo, email, eglise);
+            this.setState({ is_loading: false });
         }
     };
 }
 
-export default register;
+const mapPropsToState = state => {
+    return {
+        profil: state
+    }
+}
+
+export default connect(mapPropsToState)(register);

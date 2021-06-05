@@ -14,6 +14,7 @@ import homeScreen from "../screens/home/homeScreen";
 import searchScreen from "../screens/search/searchScreen";
 import parametreScreen from "../screens/parametre/parametreScreen";
 import detailsPublicationScreen from "../screens/detailsPublication/detailsPublicationScreen";
+import internetErrorScreen from "../screens/internetError/internetError";
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -93,6 +94,7 @@ const appNav = createAppContainer(createSwitchNavigator(
         presentation: presentationScreen,
         auth: stackForAuth,
         home: tabForHome,
+        intErr: internetErrorScreen
 
     },
     {

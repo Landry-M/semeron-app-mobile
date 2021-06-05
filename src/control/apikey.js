@@ -1,0 +1,1 @@
+export default apikey = "7d65569240b829692f72aa15d958b1";

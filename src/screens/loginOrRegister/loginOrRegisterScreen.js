@@ -55,7 +55,7 @@ class loginOrRegisterScreen extends Component {
 
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('login')} style={{ borderTopRightRadius: 15, borderBottomRightRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
                         <Text>
-                            Connexion
+                            Se connecter
                         </Text>
                     </TouchableOpacity>
                 </View>
