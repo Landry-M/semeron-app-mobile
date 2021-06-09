@@ -1,49 +1,28 @@
 import React, { Component } from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
+import { View, Image, Text, Dimensions } from 'react-native';
 import { Button } from "react-native-paper";
 
 const { height, width } = Dimensions.get('window');
 
-class internetError extends Component {
-
-    static navigationOptions = ({ navigation }) => {
-        return {
-            header: () => null
-        }
-    };
-
+class bugError extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
-
-    componentDidMount() {
-        // console.log(this.props.app.userReducer.user_info.is_logged_in);
-        // setTimeout(() => {
-        //     // this.props.navigation.navigate('dash');
-        //     this._retrieve_first_connection();
-        // }, 2000);
-
-    }
-
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
 
                 <View style={{ flex: 2, justifyContent: 'flex-end', alignItems: 'center' }}>
 
-                    <Image source={require('../../assets/images/internet.jpg')} style={{ width: 200, height: 200 }} />
+                    <Image source={require('../../assets/images/bugError.jpg')} style={{ width: 200, height: 200 }} />
 
                 </View>
 
                 <View style={{ marginTop: 40, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', textAlign: 'center', margin: 3 }}>
-                        Il semblerait que vous soyez hors ligne...
-                    </Text>
-                    <Text style={{ textAlign: 'center', margin: 5 }}>
-                        Vous pourrez consulter plus d'idée quand vous serez de nouveau
-                        connecté(e).
-                    </Text>
+                    <Text style={{ textAlign: 'center', margin: 7 }}>
+                        Une erreur est seurvenue lors de la connexion a l'API. Contactez l'administrateur système.
+                        </Text>
                 </View>
 
                 <View style={{ marginTop: 40, justifyContent: 'center', alignItems: 'center' }} >
@@ -60,7 +39,6 @@ class internetError extends Component {
                         Maadini & Heaven Tech
                     </Text> */}
                 </View>
-
             </View>
         );
     }
@@ -69,7 +47,6 @@ class internetError extends Component {
     _restart_app = () => {
         this.props.navigation.navigate('splash');
     }
-
 }
 
-export default internetError;
+export default bugError;

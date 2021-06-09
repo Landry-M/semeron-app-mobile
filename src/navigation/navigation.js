@@ -15,6 +15,9 @@ import searchScreen from "../screens/search/searchScreen";
 import parametreScreen from "../screens/parametre/parametreScreen";
 import detailsPublicationScreen from "../screens/detailsPublication/detailsPublicationScreen";
 import internetErrorScreen from "../screens/internetError/internetError";
+import bugErrorScreen from "../screens/bugError/bugError";
+import allPublicationScreen from "../screens/allPublications/allPublicationScreen";
+
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -40,6 +43,12 @@ const stackForAuth = createStackNavigator(
 const stackForHome = createStackNavigator({
     accueil: homeScreen,
     details: detailsPublicationScreen,
+    allMag: {
+        screen: allPublicationScreen,
+        navigationOptions: {
+            title: 'Toutes les publications'
+        }
+    }
 });
 
 //
@@ -50,7 +59,12 @@ const stackForSearch = createStackNavigator({
 
 //
 const stackForParams = createStackNavigator({
-    parametre: parametreScreen
+    parametre: {
+        screen: parametreScreen,
+        navigationOptions: {
+            title: 'Profile'
+        }
+    }
 });
 
 //
@@ -94,8 +108,8 @@ const appNav = createAppContainer(createSwitchNavigator(
         presentation: presentationScreen,
         auth: stackForAuth,
         home: tabForHome,
-        intErr: internetErrorScreen
-
+        intErr: internetErrorScreen,
+        bugErr: bugErrorScreen
     },
     {
         initialRouteName: 'splash'

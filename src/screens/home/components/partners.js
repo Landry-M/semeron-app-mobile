@@ -16,7 +16,7 @@ class partners extends Component {
     render() {
         return (
             <View style={{ height: 75, width: 120, alignItems: 'center', flexDirection: 'row', margin: 9 }}>
-                <Image source={this.props.data.image} style={{ height: 70, width: 70, borderRadius: 70, backgroundColor: 'white' }} resizeMode='cover' />
+                <Image source={{ uri: 'https://semeron.heaventech.org' + this.props.data.logo.path }} style={{ height: 70, width: 70, borderRadius: 70, backgroundColor: 'white' }} resizeMode='cover' />
                 {/* <Text> {this.props.data.id} </Text> */}
             </View>
         );

@@ -11,6 +11,8 @@ function profilReducer(state = initialState, action) {
         case 'SET_PROFIL':
             nextState = { ...state };
             nextState = action.value;
+            nextState.isLoggedIn = true;
+            nextState.firstLaunch = false;
             return nextState || state;
             break;
 

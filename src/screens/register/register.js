@@ -76,7 +76,7 @@ class register extends Component {
                         </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ borderTopRightRadius: 15, borderBottomRightRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('home')} style={{ borderTopRightRadius: 15, borderBottomRightRadius: 15, justifyContent: 'center', height: 40, width: 110, alignItems: 'center', borderColor: '#3FC4ED', borderWidth: 1 }}>
                         <Text>
                             Ignorer
                         </Text>
@@ -124,7 +124,7 @@ class register extends Component {
                 [
                     { text: "OK", onPress: () => this.setState({ is_loading: false }) }
                 ],
-                { cancelable: true }
+                { cancelable: false }
             );
         } else {
 
@@ -133,16 +133,33 @@ class register extends Component {
                     console.log(res.total);
                     if (res.total == 0) {
 
-                        register_user(pseudo, email, eglise).then(res => {
+                        register_user(this.pseudo, this.email, this.eglise).then(res => {
                             //redux et redirection (register reussi)
+                            const userCreated =
+                            {
+                                id: res._id,
+                                name: res.name,
+                                email: res.email,
+                                church: res.church
+                            };
+
+                            //console.log(res.name);
+                            const action = { type: 'SET_PROFIL', value: userCreated }
+                            this.props.dispatch(action);
+                            this.props.navigation.navigate('home');
+
                         }).catch(err => {
-                            ToastAndroid.showWithGravityAndOffset(
-                                'Une erreur est survenue lors de la creation de votre compte',
-                                ToastAndroid.LONG,
-                                ToastAndroid.BOTTOM,
-                                25,
-                                50
-                            );
+                            if (err == "TypeError: Network request failed") {
+                                this.props.navigation.navigate('intErr');
+                            } else {
+                                ToastAndroid.showWithGravityAndOffset(
+                                    'Une erreur est survenue lors de la creation de votre compte',
+                                    ToastAndroid.LONG,
+                                    ToastAndroid.BOTTOM,
+                                    25,
+                                    50
+                                );
+                            }
                         })
 
                     } else {
@@ -159,6 +176,14 @@ class register extends Component {
                     //console.log(err);
                     if (err == "TypeError: Network request failed") {
                         this.props.navigation.navigate('intErr');
+                    } else {
+                        ToastAndroid.showWithGravityAndOffset(
+                            'Une erreur est survenue lors de la creation de votre compte',
+                            ToastAndroid.LONG,
+                            ToastAndroid.BOTTOM,
+                            25,
+                            50
+                        );
                     }
                 });
 

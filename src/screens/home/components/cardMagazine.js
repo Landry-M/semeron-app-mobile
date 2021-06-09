@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 
+import ImageBlurLoading from 'react-native-image-blur-loading'
+
+
 class cardMagazine extends Component {
     constructor(props) {
         super(props);
@@ -8,10 +11,18 @@ class cardMagazine extends Component {
     }
     render() {
         return (
-            <TouchableOpacity onPress={() => this.props.goToDetails()} style={{ borderRadius: 5, height: 180, width: 110, borderWidth: 1, borderColor: '#E0E9EF', margin: 5 }}>
-                <Image source={require('../../../assets/images/far.jpg')} style={{ borderRadius: 5, height: 140, width: 108 }} resizeMode='cover' />
+            <TouchableOpacity onPress={() => this.props.goToDetails(this.props.mag._id)} style={{ borderRadius: 5, height: 145, width: 110, borderWidth: 1, borderColor: '#E0E9EF', margin: 5 }}>
+                {/* <Image source={{ uri: 'https://semeron.heaventech.org' + this.props.mag.image.path }} style={{ borderRadius: 5, height: 100, width: 108 }} resizeMode='cover' /> */}
+
+                <ImageBlurLoading
+                    withIndicator
+                    thumbnailSource={{ uri: 'https://semeron.heaventech.org' + this.props.mag.image.path }}
+                    source={{ uri: 'https://semeron.heaventech.org' + this.props.mag.image.path }}
+                    style={{ borderRadius: 5, height: 110, width: 108, resizeMode: 'cover' }}
+                />
+
                 <Text style={{ margin: 4, fontSize: 12 }}>
-                    jesus 123 ...
+                    {this.props.mag.title}
                 </Text>
             </TouchableOpacity >
         );
