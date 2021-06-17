@@ -36,7 +36,7 @@ class allPublicationScreen extends Component {
         if (this.props.navigation.state.params.categ_mag == 'all') {
 
             get_all_publications()
-                .then(res => { this.setState({ mags: res.entries, is_loading: false }) })
+                .then(res => { this.setState({ mags: [...this.state.mags, ...res.entries], is_loading: false }) })
                 .catch(err => console.log(err));
 
         } else {
@@ -70,6 +70,7 @@ class allPublicationScreen extends Component {
                     renderItem={({ item }) => <PublicationCard mag={item} goToDetails={this._goToDetails} />}
 
                     showsHorizontalScrollIndicator={false}
+                    onEndReachedThreshold={0.5}
                 />
             );
         };
