@@ -97,7 +97,8 @@ class loginScreen extends Component {
     //
     _on_validate() {
         this.setState({ is_loading: true });
-        console.log(` ${this.pseudo} ${this.eglise} `);
+
+        //console.log(` ${this.pseudo} ${this.eglise} `);
 
         if (this.pseudo == "" || this.eglise == "") {
             Alert.alert(
@@ -123,12 +124,13 @@ class loginScreen extends Component {
                             50
                         );
                     } else {
+
                         const user_logged_in =
                         {
-                            id: res._id,
-                            name: res.name,
-                            email: res.email,
-                            church: res.church
+                            id: res.entries[0]._id,
+                            name: res.entries[0].name,
+                            email: res.entries[0].email,
+                            church: res.entries[0].church
                         };
 
                         const action = { type: 'SET_PROFIL', value: user_logged_in }

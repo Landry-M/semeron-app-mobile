@@ -32,7 +32,7 @@ class searchScreen extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, margin: 7 }}>
+            <View style={{ flex: 1, backgroundColor: '#E0E4EF' }}>
                 <TextInput
                     placeholder="Recherche ... "
                     onChangeText={mag => this.setText(mag)}
@@ -106,9 +106,10 @@ class searchScreen extends Component {
         );
     };
 
+
     //Navigate to detail
-    _goToGamesDetails = (id_mag) => {
-        this.props.navigation.navigate('details', { id: id_mag });
+    _goToGamesDetails = (id) => {
+        this.props.navigation.navigate('details', { id_mag: id });
     }
 }
 

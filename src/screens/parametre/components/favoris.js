@@ -4,7 +4,7 @@ import { TouchableOpacity, Text, Image } from "react-native";
 import ImageBlurLoading from 'react-native-image-blur-loading'
 
 
-class cardLesPlusSuivi extends Component {
+class favoris extends Component {
 
     constructor(props) {
         super(props);
@@ -31,4 +31,4 @@ class cardLesPlusSuivi extends Component {
     }
 }
 
-export default cardLesPlusSuivi;
+export default favoris;

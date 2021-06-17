@@ -17,6 +17,7 @@ import detailsPublicationScreen from "../screens/detailsPublication/detailsPubli
 import internetErrorScreen from "../screens/internetError/internetError";
 import bugErrorScreen from "../screens/bugError/bugError";
 import allPublicationScreen from "../screens/allPublications/allPublicationScreen";
+import updateParamsScreen from "../screens/updateParams/updateParamsScreen";
 
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -42,7 +43,12 @@ const stackForAuth = createStackNavigator(
 //
 const stackForHome = createStackNavigator({
     accueil: homeScreen,
-    details: detailsPublicationScreen,
+    details: {
+        screen: detailsPublicationScreen,
+        navigationOptions: {
+            title: 'Details'
+        }
+    },
     allMag: {
         screen: allPublicationScreen,
         navigationOptions: {
@@ -63,6 +69,12 @@ const stackForParams = createStackNavigator({
         screen: parametreScreen,
         navigationOptions: {
             title: 'Profile'
+        }
+    },
+    updateParams: {
+        screen: updateParamsScreen,
+        navigationOptions: {
+            title: 'Mettre à jour'
         }
     }
 });

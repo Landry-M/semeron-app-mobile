@@ -130,7 +130,7 @@ class register extends Component {
 
             let user_exist = get_user_info(this.pseudo)
                 .then(res => {
-                    console.log(res.total);
+                    //console.log(res.total);
                     if (res.total == 0) {
 
                         register_user(this.pseudo, this.email, this.eglise).then(res => {

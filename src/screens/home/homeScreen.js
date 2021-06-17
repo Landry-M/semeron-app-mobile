@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import ActivityIndicator from "../components/activityIndicator";
 import ImageBlurLoading from 'react-native-image-blur-loading'
 
-
 //call api
 import get_caroussel, { get_audio_article, partner_logo, get_text_article, get_latest_content } from "../../control/home/control_home";
 
@@ -57,7 +56,7 @@ class homeScreen extends Component {
         return (
             <ScrollView style={{ flex: 1, backgroundColor: '#E0E4EF' }}>
 
-                <View style={{ marginTop: 10, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 5 }}>
+                <View style={{ height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', margin: 5 }}>
                     <Text style={{ marginLeft: 7, fontWeight: 'bold', color: 'green', fontSize: 18 }}>
                         Semeron
                         </Text>
@@ -127,33 +126,36 @@ class homeScreen extends Component {
                 ?
                 <ActivityIndicator />
                 :
-                <Swiper
-                    timeout={5}
-                    loop={true}
-                    controlsProps={{
-                        prevTitle: 'Précedent',
-                        nextTitle: 'Suivant',
-                        prevPos: false,
-                        nextPos: false
-                    }}
-                >
-                    {this.state.slider_data.map((data, key) => {
-                        return (
-                            <View style={styles.main_container} >
-                                <Image source={{ uri: 'https://semeron.heaventech.org' + data.img_paysage.path }} resizeMode='cover' style={styles.image} />
+                <>
+                    <Swiper
+                        timeout={5}
+                        loop={true}
+                        controlsProps={{
+                            prevTitle: 'Précedent',
+                            nextTitle: 'Suivant',
+                            prevPos: false,
+                            nextPos: false
+                        }}
+                    >
+                        {this.state.slider_data.map((data, key) => {
+                            return (
+                                <View style={styles.main_container} >
+                                    <Image source={{ uri: 'https://semeron.heaventech.org' + data.img_paysage.path }} resizeMode='cover' style={styles.image} />
 
-                                <View>
-                                    <Image style={{ marginLeft: 5, height: 150, width: 100, borderRadius: 15, marginTop: -85 }} source={{ uri: 'https://semeron.heaventech.org' + data.img_portrait.path }} resizeMode='cover' />
+                                    <View>
+                                        <Image style={{ marginLeft: 5, height: 150, width: 100, borderRadius: 15, marginTop: -85 }} source={{ uri: 'https://semeron.heaventech.org' + data.img_portrait.path }} resizeMode='cover' />
 
-                                    <Text style={{ marginTop: -50, marginLeft: 110, fontWeight: 'bold', fontSize: 13, marginRight: 7 }}>
-                                        {data.title}
-                                    </Text>
+                                        <Text style={{ marginTop: -50, marginLeft: 110, fontWeight: 'bold', fontSize: 13, marginRight: 7 }}>
+                                            {data.title}
+                                        </Text>
+                                    </View>
+
                                 </View>
-
-                            </View>
-                        );
-                    })}
-                </Swiper>
+                            );
+                        })}
+                    </Swiper>
+                    <Divider />
+                </>
         );
     }
 
@@ -174,7 +176,7 @@ class homeScreen extends Component {
                 </View>
                 :
                 <View>
-                    <Divider />
+
                     <Text style={{ fontWeight: 'bold', marginLeft: 12, paddingBottom: 10, color: '#3FC4ED' }}>NOS PARTENAIRES</Text>
                     <FlatList
                         contentContainerStyle={{ marginLeft: 20, justifyContent: 'center', alignItems: 'center', height: 75, }}

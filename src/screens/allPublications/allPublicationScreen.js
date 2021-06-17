@@ -6,6 +6,7 @@ import get_all_publications, { get_all_publications_by_categ } from "../../contr
 import ActivityIndicator from "../components/activityIndicator";
 import PublicationCard from "./components/publicationCard";
 
+
 class allPublicationScreen extends Component {
 
     constructor(props) {

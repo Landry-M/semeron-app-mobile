@@ -32,7 +32,9 @@ class presentationScreen extends Component {
                 <View style={styles.main_container} >
                     <Image source={require('../../assets/images/slide1.jpg')} resizeMode='center' style={{ height: 350, width: 350 }} />
                     <Text style={{ textAlign: 'center' }}>
-                        Elit nostrud veniam veniam proident eu exercitation nisi ullamco eiusmod. Do aute eu consectetur nulla quis laboris culpa irure cillum commodo. Consectetur id est deserunt dolor sit aliquip duis laborum culpa ipsum consequat commodo ad. Ut sint eiusmod sunt fugiat dolore aute ullamco esse minim veniam commodo sunt deserunt esse.
+                        Le terme semeron est le mot hébreux pour désigner « ce jour, aujourd’hui ».
+                        Ce que nous poursuivons, c’est de pouvoir nous exhorter tous les jours, aussi longtemps
+                        qu’on peut dire: Aujourd’hui!.
                     </Text>
                 </View>
 
@@ -40,14 +42,23 @@ class presentationScreen extends Component {
 
                     <Image source={require('../../assets/images/slide2.jpg')} resizeMode='center' style={{ height: 350, width: 350 }} />
                     <Text style={{ textAlign: 'center' }}>
-                        Amet mollit ea duis consectetur aliquip dolore qui occaecat reprehenderit proident sit nostrud eu ex. Excepteur occaecat tempor veniam commodo dolor. Eiusmod nisi laboris ut aliquip minim. Aliquip dolor labore ut voluptate reprehenderit laborum. Anim ullamco sit excepteur voluptate sunt adipisicing ipsum.
+
+                        La vision du magazine est d’édifier tous les jour le peuple de Dieu au moyen de la parole de Dieu selon
+                        le texte qu’on retrouve dans Hébreux 3:13 qui dit: “Mais exhortez-vous les uns les autres chaque jour,
+                        aussi longtemps qu'on peut dire:
+                        Aujourd'hui! afin qu'aucun de vous ne s'endur-cisse par la séduction du péché.
                     </Text>
                 </View>
 
                 <View style={styles.main_container} >
                     <Image source={require('../../assets/images/slide3.jpg')} resizeMode='center' style={{ height: 350, width: 350 }} />
                     <Text style={{ textAlign: 'center' }}>
-                        Laborum dolore adipisicing et tempor dolore consectetur ad excepteur esse occaecat. Esse ipsum voluptate ex voluptate excepteur nostrud. Enim veniam reprehenderit culpa adipisicing voluptate veniam irure velit mollit minim ipsum laboris exercitation amet. Ea cillum velit officia laborum ullamco velit esse velit officia laborum aute est. Ut fugiat sunt id ex incididunt qui minim officia veniam.
+
+                        Projet dynamique et innovant, Wonderfull Christian Magazine est un média culturel chrétien
+                        qui se différencie des autres par les moyens queque le projet met en œuvre
+                        pour atteindre le public, l’exhaustivité de l’information que nous proposons et les sujets
+                        que nous traitons.
+
                     </Text>
 
                     <View style={{ height: 50, width: width, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 15 }}>

@@ -13,7 +13,7 @@ function profilReducer(state = initialState, action) {
             nextState = action.value;
             nextState.isLoggedIn = true;
             nextState.firstLaunch = false;
-            return nextState || state;
+            return nextState;
             break;
 
         case 'SET_FIRST_LAUNCH_APP':
